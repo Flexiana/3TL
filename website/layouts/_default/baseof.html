@@ -14,9 +14,9 @@
     </div>
     <div class="nav-right">
       <a href="{{ .Site.BaseURL }}">Home</a>
-      <a href="/examples/">Examples</a>
-      <a href="/parsers/">Parsers</a>
-      <a href="/docs/">Docs</a>
+      <a href="{{ "examples/" | relURL }}">Examples</a>
+      <a href="{{ "parsers/" | relURL }}">Parsers</a>
+      <a href="{{ "docs/" | relURL }}">Docs</a>
       <a href="{{ .Site.Params.github }}">GitHub</a>
     </div>
   </nav>
