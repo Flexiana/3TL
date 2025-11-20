@@ -16,9 +16,22 @@ body {
 nav {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 20px 0;
   border-bottom: 2px solid #eee;
   margin-bottom: 40px;
+}
+
+nav .nav-left .logo {
+  font-weight: 700;
+  font-size: 1.3em;
+  color: #333;
+  text-decoration: none;
+}
+
+nav .nav-right {
+  display: flex;
+  gap: 20px;
 }
 
 nav a {
@@ -137,6 +150,10 @@ li {
   margin-bottom: 8px;
 }
 
+strong {
+  font-weight: 600;
+}
+
 footer {
   margin-top: 60px;
   padding-top: 20px;
@@ -146,6 +163,13 @@ footer {
 }
 
 footer a {
+  color: #666;
+}
+
+blockquote {
+  border-left: 4px solid #0066cc;
+  padding-left: 15px;
+  margin: 20px 0;
   color: #666;
 }
 
@@ -160,10 +184,23 @@ footer a {
   
   nav {
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
+    align-items: flex-start;
+  }
+  
+  nav .nav-right {
+    flex-wrap: wrap;
   }
   
   .cta {
     flex-direction: column;
+  }
+  
+  table {
+    font-size: 0.9em;
+  }
+  
+  th, td {
+    padding: 8px;
   }
 }

@@ -9,8 +9,16 @@
 </head>
 <body>
   <nav>
-    <a href="{{ .Site.BaseURL }}">3TL</a>
-    <a href="{{ .Site.Params.github }}">GitHub</a>
+    <div class="nav-left">
+      <a href="{{ .Site.BaseURL }}" class="logo">3TL</a>
+    </div>
+    <div class="nav-right">
+      <a href="{{ .Site.BaseURL }}">Home</a>
+      <a href="/examples/">Examples</a>
+      <a href="/parsers/">Parsers</a>
+      <a href="/docs/">Docs</a>
+      <a href="{{ .Site.Params.github }}">GitHub</a>
+    </div>
   </nav>
   <main>
     {{ block "main" . }}{{ end }}
