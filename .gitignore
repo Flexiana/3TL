@@ -8,6 +8,9 @@ __pycache__/
 venv/
 ENV/
 
+# Environment variables
+.env
+
 # Clojure
 .cpcache/
 .nrepl-port
@@ -32,3 +35,8 @@ package-lock.json
 # OS
 .DS_Store
 Thumbs.db
+
+# Evals
+evals/logs/
+evals/__pycache__/
+evals/.venv/
