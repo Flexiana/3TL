@@ -1,0 +1,169 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 0;
+  border-bottom: 2px solid #eee;
+  margin-bottom: 40px;
+}
+
+nav a {
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+nav a:hover {
+  color: #0066cc;
+}
+
+h1 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 1.8em;
+  margin-top: 40px;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 1.3em;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+p {
+  margin-bottom: 15px;
+}
+
+.subtitle {
+  font-size: 1.2em;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+code {
+  background: #f5f5f5;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-family: "Menlo", "Monaco", "Courier New", monospace;
+  font-size: 0.9em;
+}
+
+pre {
+  background: #f5f5f5;
+  padding: 15px;
+  border-radius: 5px;
+  overflow-x: auto;
+  margin: 20px 0;
+}
+
+pre code {
+  background: none;
+  padding: 0;
+}
+
+.cta {
+  margin-top: 40px;
+  display: flex;
+  gap: 15px;
+}
+
+.button {
+  display: inline-block;
+  padding: 12px 24px;
+  background: #0066cc;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.button:hover {
+  background: #0052a3;
+}
+
+.button.secondary {
+  background: #666;
+}
+
+.button.secondary:hover {
+  background: #444;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+th, td {
+  text-align: left;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+th {
+  font-weight: 600;
+  background: #f5f5f5;
+}
+
+ul, ol {
+  margin-left: 25px;
+  margin-bottom: 15px;
+}
+
+li {
+  margin-bottom: 8px;
+}
+
+footer {
+  margin-top: 60px;
+  padding-top: 20px;
+  border-top: 2px solid #eee;
+  color: #666;
+  font-size: 0.9em;
+}
+
+footer a {
+  color: #666;
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 15px;
+  }
+  
+  h1 {
+    font-size: 2em;
+  }
+  
+  nav {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .cta {
+    flex-direction: column;
+  }
+}

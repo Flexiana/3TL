@@ -1,0 +1,14 @@
+baseURL = 'https://flexiana.github.io/3TL/'
+languageCode = 'en-us'
+title = '3TL - Typed Talking To LLMs'
+
+[params]
+  description = 'CSV with types, foreign keys, and enums. Designed for LLM data exchange.'
+  github = 'https://github.com/Flexiana/3TL'
+
+[markup]
+  [markup.highlight]
+    style = 'monokailight'
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true

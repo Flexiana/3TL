@@ -1,0 +1,13 @@
+{{ define "main" }}
+<article class="home">
+  <h1>3TL</h1>
+  <p class="subtitle">CSV with types, foreign keys, and enums. Designed for LLM data exchange.</p>
+  
+  {{ .Content }}
+  
+  <div class="cta">
+    <a href="{{ .Site.Params.github }}" class="button">GitHub</a>
+    <a href="/docs/" class="button secondary">Documentation</a>
+  </div>
+</article>
+{{ end }}
