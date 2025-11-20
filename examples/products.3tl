@@ -1,0 +1,17 @@
+# E-commerce product catalog example
+# Demonstrates basic types, enums, and nullable fields
+
+#! Category
+#@ id:uint, name:str, description:str?
+1, Electronics, Gadgets and devices
+2, Books, Physical and digital books
+3, Clothing, Apparel and accessories
+
+#! Product
+#@ id:uint, category_id:ref(Category.id), name:str, price:decimal(10,2), in_stock:bool, status:enum(active|discontinued|coming_soon)
+1, 1, Wireless Mouse, 29.99, true, active
+2, 1, USB-C Hub, 49.99, true, active
+3, 2, "Clean Code", 39.95, true, active
+4, 2, "The Pragmatic Programmer", 44.99, false, active
+5, 3, Developer T-Shirt, 24.99, true, coming_soon
+6, 1, VGA Adapter, 9.99, false, discontinued

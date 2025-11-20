@@ -1,0 +1,33 @@
+# Blog platform example
+# Demonstrates relationships between multiple tables
+
+#! User
+#@ id:uint, username:str, email:str, created_at:datetime
+1, alice, alice@example.com, 2024-01-15 09:00:00
+2, bob, bob@example.com, 2024-02-20 14:30:00
+3, charlie, charlie@example.com, 2024-03-10 11:15:00
+
+#! Post
+#@ id:uint, author_id:ref(User.id), title:str, content:text, published:bool, created_at:datetime
+1, 1, Introduction to 3TL, "3TL is a lightweight format for LLM communication. It combines the simplicity of CSV with type safety.", true, 2024-06-01 10:00:00
+2, 2, Why Types Matter, "Type systems help catch errors early and make data more predictable...", true, 2024-06-15 14:00:00
+3, 1, Advanced 3TL Patterns, "In this post we explore relationships and references...", false, 2024-07-01 09:00:00
+
+#! Comment
+#@ id:uint, post_id:ref(Post.id), user_id:ref(User.id), content:str, created_at:datetime
+1, 1, 2, Great introduction! Very clear., 2024-06-02 08:30:00
+2, 1, 3, This is exactly what I needed., 2024-06-02 15:45:00
+3, 2, 1, Interesting perspective on type systems., 2024-06-16 10:00:00
+
+#! Tag
+#@ id:uint, name:str
+1, tutorial
+2, types
+3, advanced
+
+#! PostTag
+#@ post_id:ref(Post.id), tag_id:ref(Tag.id)
+1, 1
+1, 2
+2, 2
+3, 3

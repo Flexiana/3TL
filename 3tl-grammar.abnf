@@ -1,0 +1,115 @@
+; ==============================================================================
+; 3TL: Typed Talking To LLMs - ABNF Grammar (Complete)
+; ==============================================================================
+;
+; Design decisions:
+; - Identifiers support Unicode letters (XID_Start, XID_Continue)
+; - Type names are case-insensitive (int, INT, Int all valid)
+; - Both int?[] (array of nullable) and int[]? (nullable array) are valid
+; - Enum values follow identifier rules
+; - Null values: empty field or explicit null/NULL
+; - Comments allowed anywhere in the file
+;
+; ==============================================================================
+
+three-tl-file  = *( line-break / element )
+element        = comment-line / table-block
+
+; --- General Line Structure ---------------------------------------------------
+line-break     = CRLF / LF
+CRLF           = CR LF
+sp             = SP / HTAB           ; Space or Tab
+ows            = *sp                 ; Optional Whitespace
+
+; --- Identifiers --------------------------------------------------------------
+; Identifiers support Unicode, but core ABNF shows ASCII subset
+; Implementations should support Unicode XID_Start / XID_Continue
+identifier     = id-start *id-continue
+id-start       = ALPHA / "_"         ; Letter or underscore (Unicode: XID_Start)
+id-continue    = ALPHA / DIGIT / "_" ; Letter, digit, underscore (Unicode: XID_Continue)
+
+; --- Comments -----------------------------------------------------------------
+; Comments start with "# " (hash + space) or just "#" followed by non-special char
+; Lines starting with "#!" or "#@" are NOT comments
+comment-line   = "#" [ comment-char *VCHAR ] line-break
+comment-char   = SP / %x22-3F / %x41-FF  ; Any char except '!' (%x21) or '@' (%x40)
+
+; --- Table Structure ----------------------------------------------------------
+table-block    = table-header [ schema-def ] *( comment-line / data-row )
+table-header   = "#!" ows identifier ows line-break
+schema-def     = "#@" ows col-defs ows line-break
+col-defs       = col-def *( ows "," ows col-def )
+col-def        = identifier ows ":" ows type-expr
+
+; --- Type Definitions ---------------------------------------------------------
+; Type names are case-insensitive
+type-expr      = base-type [ type-modifier ]
+type-modifier  = array-then-null / null-then-array / array-suffix / nullable-suffix
+array-then-null = array-suffix nullable-suffix   ; int[]?
+null-then-array = nullable-suffix array-suffix   ; int?[]
+array-suffix   = "[" "]"
+nullable-suffix = "?"
+
+base-type      = integer-type / float-type / decimal-type / bool-type /
+                 text-type / time-type / ref-type / enum-type
+
+; Integers (case-insensitive)
+integer-type   = %i"i8" / %i"i16" / %i"i32" / %i"i64" / %i"int" /
+                 %i"u8" / %i"u16" / %i"u32" / %i"u64" / %i"uint"
+
+; Floats (case-insensitive)
+float-type     = %i"f32" / %i"f64" / %i"float"
+
+; Financial (case-insensitive)
+decimal-type   = %i"decimal" ows "(" ows 1*DIGIT ows "," ows 1*DIGIT ows ")"
+
+; Boolean (case-insensitive)
+bool-type      = %i"bool"
+
+; Text (case-insensitive)
+text-type      = %i"str" / %i"text"
+
+; Date/Time (case-insensitive)
+time-type      = %i"date" / %i"time" / %i"datetime" / %i"timestamp"
+
+; Reference to another table's column (case-insensitive keyword)
+ref-type       = %i"ref" ows "(" ows identifier "." identifier ows ")"
+
+; Enumeration (case-insensitive keyword)
+enum-type      = %i"enum" ows "(" ows enum-values ows ")"
+enum-values    = identifier *( ows "|" ows identifier )
+
+; --- Data Rows ----------------------------------------------------------------
+data-row       = field *( "," field ) line-break
+field          = ows ( quoted-field / unquoted-field ) ows
+
+; Quoted Field (RFC 4180 CSV)
+; - Enclosed in double quotes
+; - Can contain commas, newlines, any Unicode
+; - Literal " is escaped as ""
+quoted-field   = DQUOTE *( TEXTDATA / 2DQUOTE / CR / LF ) DQUOTE
+
+; Unquoted Field
+; - Cannot contain comma, quote, or newline
+; - Can be empty (for null) or contain "null"/"NULL"
+unquoted-field = *TEXTDATA
+
+; --- Character Classes --------------------------------------------------------
+2DQUOTE        = DQUOTE DQUOTE       ; Escaped quote inside quoted field
+
+; Text content (excluding special CSV characters)
+; Note: Unicode beyond ASCII (%x80-10FFFF) is supported but simplified here for parser compatibility
+TEXTDATA       = %x20-21 /           ; Space, !
+                 %x23-2B /           ; # through +
+                 %x2D-7E /           ; - through ~ (excludes comma %x2C)
+                 %x80-FF             ; Extended ASCII / UTF-8 continuation bytes
+
+; --- Core ABNF Primitives -----------------------------------------------------
+ALPHA          = %x41-5A / %x61-7A   ; A-Z / a-z
+DIGIT          = %x30-39             ; 0-9
+DQUOTE         = %x22                ; "
+SP             = %x20                ; Space
+HTAB           = %x09                ; Horizontal Tab
+CR             = %x0D                ; Carriage Return
+LF             = %x0A                ; Line Feed
+VCHAR          = %x21-7E             ; Visible (printing) characters

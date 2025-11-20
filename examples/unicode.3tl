@@ -1,0 +1,23 @@
+# Unicode support example
+# Demonstrates international characters in table names, column names, and data
+
+#! Café
+#@ id:uint, nombre:str, ciudad:str, descripción:str
+1, El Rincón, Madrid, Café tradicional español
+2, Café de Flore, Paris, Célèbre café français
+3, Kaffeehaus, Wien, Österreichisches Kaffeehaus
+
+#! 書籍
+#@ id:uint, 名前:str, 著者:str, 価格:decimal(10,2)
+1, 吾輩は猫である, 夏目漱石, 15.99
+2, ノルウェイの森, 村上春樹, 18.50
+
+#! Пользователь
+#@ id:uint, имя:str, email:str, город:str
+1, Александр, alex@example.ru, Москва
+2, Екатерина, kate@example.ru, Санкт-Петербург
+
+#! Προϊόν
+#@ id:uint, όνομα:str, τιμή:decimal(10,2)
+1, Ελαιόλαδο, 12.50
+2, Φέτα, 8.99

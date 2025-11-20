@@ -1,0 +1,99 @@
+// ==============================================================================
+// 3TL: Typed Talking To LLMs - Lark Grammar (EBNF)
+// ==============================================================================
+//
+// Lark version of the 3TL grammar with full Unicode support
+//
+// ==============================================================================
+
+?start: three_tl_file
+
+three_tl_file: (LINE_BREAK | element)*
+
+element: comment_line
+       | table_block
+
+// --- Comments -----------------------------------------------------------------
+comment_line: COMMENT_START COMMENT_TEXT? LINE_BREAK
+
+COMMENT_START: /#(?![!@])/
+COMMENT_TEXT: /[^\n]+/
+
+// --- Table Structure ----------------------------------------------------------
+table_block: table_header (schema_def | comment_line | data_row)*
+
+table_header.2: "#!" WS? identifier WS? LINE_BREAK
+
+schema_def.2: "#@" WS? col_defs WS? LINE_BREAK
+
+col_defs: col_def (WS? "," WS? col_def)*
+
+col_def: identifier WS? ":" WS? type_expr
+
+// --- Identifiers --------------------------------------------------------------
+// Supports Unicode XID_Start and XID_Continue
+identifier: ID_START ID_CONTINUE*
+
+ID_START: /[a-zA-Z_\u00C0-\u024F\u1E00-\u1EFF\u0400-\u04FF\u0370-\u03FF\u4E00-\u9FFF\u3040-\u309F\u30A0-\u30FF]/
+
+ID_CONTINUE: /[a-zA-Z0-9_\u00C0-\u024F\u1E00-\u1EFF\u0400-\u04FF\u0370-\u03FF\u4E00-\u9FFF\u3040-\u309F\u30A0-\u30FF]/
+
+// --- Type Definitions ---------------------------------------------------------
+type_expr: base_type type_modifier?
+
+type_modifier: array_suffix nullable_suffix  // int[]?
+             | nullable_suffix array_suffix  // int?[]
+             | array_suffix                  // int[]
+             | nullable_suffix               // int?
+
+array_suffix: "[" "]"
+nullable_suffix: "?"
+
+base_type: integer_type
+         | float_type
+         | decimal_type
+         | bool_type
+         | text_type
+         | time_type
+         | ref_type
+         | enum_type
+
+// Types (case-insensitive)
+integer_type: /i8|i16|i32|i64|int|u8|u16|u32|u64|uint/i
+
+float_type: /f32|f64|float/i
+
+decimal_type: /decimal/i WS? "(" WS? /\d+/ WS? "," WS? /\d+/ WS? ")"
+
+bool_type: /bool/i
+
+text_type: /str|text/i
+
+time_type: /datetime|timestamp|date|time/i  // Order matters: longer matches first
+
+ref_type: /ref/i WS? "(" WS? identifier "." identifier WS? ")"
+
+enum_type: /enum/i WS? "(" WS? enum_values WS? ")"
+
+enum_values: identifier (WS? "|" WS? identifier)*
+
+// --- Data Rows ----------------------------------------------------------------
+data_row: field ("," field)* LINE_BREAK
+
+field: WS? (quoted_field | unquoted_field?) WS?
+
+// Quoted fields can contain anything including commas and newlines
+// Quotes inside are escaped as "" (CSV style)
+quoted_field: QUOTED_STRING
+
+QUOTED_STRING: /"([^"]|"")*"/
+
+// Unquoted field: any chars except comma, quote, newline
+// Must not start with # (to avoid conflicts with table headers and schema defs)
+unquoted_field: /[^#\",\r\n][^\",\r\n]*/
+              | /[0-9][^\",\r\n]*/   // Allow fields starting with digits
+
+// --- Whitespace and Line Breaks -----------------------------------------------
+WS: /[ \t]+/
+
+LINE_BREAK: /\r?\n/
