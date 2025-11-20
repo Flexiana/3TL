@@ -1,0 +1,106 @@
+╭──────────────────────────────────────────────────────────────────────────────╮
+│zero_shot_format_recognition (1 sample): anthropic/claude-3-5-haiku-20241022  │
+╰──────────────────────────────────────────────────────────────────────────────╯
+dataset: (samples)                                                              
+                                                                                
+total time:                            0:00:04                                  
+anthropic/claude-3-5-haiku-20241022    258 tokens [I: 96, CW: 0, CR: 0, O: 162] 
+                                                                                
+includes                                                                        
+accuracy  1.000                                                                 
+stderr    0.000                                                                 
+                                                                                
+Log:                                                                            
+logs/2025-11-20T09-41-39+01-00_zero-shot-format-recognition_Y3zr2QZFYqLoUo6X9RW7
+Bf.eval                                                                         
+                                                                                ╭──────────────────────────────────────────────────────────────────────────────╮
+│zero_shot_structure_understanding (3 samples):                                │
+╰──────────────────────────────────────────────────────────────────────────────╯
+dataset: (samples)                                                              
+                                                                                
+total time:                           0:00:07                                   
+anthropic/claude-3-5-haiku-20241022   672 tokens [I: 317, CW: 0, CR: 0, O: 355] 
+                                                                                
+includes                                                                        
+accuracy  1.000                                                                 
+stderr    0.000                                                                 
+                                                                                
+Log:                                                                            
+logs/2025-11-20T09-41-44+01-00_zero-shot-structure-understanding_Xt6rbMvzVvTYxHe
+S8ZZ4o2.eval                                                                    
+                                                                                ╭──────────────────────────────────────────────────────────────────────────────╮
+│zero_shot_type_understanding (3 samples): anthropic/claude-3-5-haiku-20241022 │
+╰──────────────────────────────────────────────────────────────────────────────╯
+dataset: (samples)                                                              
+                                                                                
+total time:                           0:00:10                                   
+anthropic/claude-3-5-haiku-20241022   796 tokens [I: 337, CW: 0, CR: 0, O: 459] 
+                                                                                
+includes                                                                        
+accuracy  1.000                                                                 
+stderr    0.000                                                                 
+                                                                                
+Log:                                                                            
+logs/2025-11-20T09-41-51+01-00_zero-shot-type-understanding_FhkLkCNKu9K7bRcyhS8k
+yt.eval                                                                         
+                                                                                ╭──────────────────────────────────────────────────────────────────────────────╮
+│zero_shot_relationship_understanding (2 samples):                             │
+╰──────────────────────────────────────────────────────────────────────────────╯
+dataset: (samples)                                                              
+                                                                                
+total time:                           0:00:04                                   
+anthropic/claude-3-5-haiku-20241022   557 tokens [I: 312, CW: 0, CR: 0, O: 245] 
+                                                                                
+includes                                                                        
+accuracy  1.000                                                                 
+stderr    0.000                                                                 
+                                                                                
+Log:                                                                            
+logs/2025-11-20T09-42-01+01-00_zero-shot-relationship-understanding_3eZLTNbfocL5
+kjF6psG6kK.eval                                                                 
+                                                                                ╭──────────────────────────────────────────────────────────────────────────────╮
+│zero_shot_data_extraction (3 samples): anthropic/claude-3-5-haiku-20241022    │
+╰──────────────────────────────────────────────────────────────────────────────╯
+dataset: (samples)                                                              
+                                                                                
+total time:                            0:00:03                                  
+anthropic/claude-3-5-haiku-20241022    406 tokens [I: 311, CW: 0, CR: 0, O: 95] 
+                                                                                
+includes                                                                        
+accuracy  1.000                                                                 
+stderr    0.000                                                                 
+                                                                                
+Log:                                                                            
+logs/2025-11-20T09-42-05+01-00_zero-shot-data-extraction_RTgLLgBMqHUhdjWNJBNtYj.
+eval                                                                            
+                                                                                ╭──────────────────────────────────────────────────────────────────────────────╮
+│zero_shot_syntax_explanation (2 samples): anthropic/claude-3-5-haiku-20241022 │
+╰──────────────────────────────────────────────────────────────────────────────╯
+dataset: (samples)                                                              
+                                                                                
+total time:                           0:00:02                                   
+anthropic/claude-3-5-haiku-20241022   430 tokens [I: 265, CW: 0, CR: 0, O: 165] 
+                                                                                
+includes                                                                        
+accuracy  1.000                                                                 
+stderr    0.000                                                                 
+                                                                                
+Log:                                                                            
+logs/2025-11-20T09-42-08+01-00_zero-shot-syntax-explanation_DELoHWJj7ka76iwgWGut
+bc.eval                                                                         
+                                                                                ╭──────────────────────────────────────────────────────────────────────────────╮
+│zero_shot_comparison_to_csv (1 sample): anthropic/claude-3-5-haiku-20241022   │
+╰──────────────────────────────────────────────────────────────────────────────╯
+dataset: (samples)                                                              
+                                                                                
+total time:                           0:00:05                                   
+anthropic/claude-3-5-haiku-20241022   327 tokens [I: 105, CW: 0, CR: 0, O: 222] 
+                                                                                
+includes                                                                        
+accuracy  1.000                                                                 
+stderr    0.000                                                                 
+                                                                                
+Log:                                                                            
+logs/2025-11-20T09-42-10+01-00_zero-shot-comparison-to-csv_QzYtwFjKXmygsQGcQ5X5b
+z.eval                                                                          
+                                                                                

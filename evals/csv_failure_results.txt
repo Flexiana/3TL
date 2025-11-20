@@ -1,0 +1,133 @@
+╭──────────────────────────────────────────────────────────────────────────────╮
+│csv_type_ambiguity (2 samples): anthropic/claude-3-5-haiku-20241022           │
+╰──────────────────────────────────────────────────────────────────────────────╯
+dataset: (samples)                                                              
+                                                                                
+total time:                           0:00:03                                   
+anthropic/claude-3-5-haiku-20241022   286 tokens [I: 109, CW: 0, CR: 0, O: 177] 
+                                                                                
+includes                                                                        
+accuracy  1.000                                                                 
+stderr    0.000                                                                 
+                                                                                
+Log:                                                                            
+logs/2025-11-20T09-47-27+01-00_csv-type-ambiguity_58Z8Bp5RMvCqcbAxvRZhSg.eval   
+                                                                                ╭──────────────────────────────────────────────────────────────────────────────╮
+│csv_precision_loss (2 samples): anthropic/claude-3-5-haiku-20241022           │
+╰──────────────────────────────────────────────────────────────────────────────╯
+dataset: (samples)                                                              
+                                                                                
+total time:                           0:00:03                                   
+anthropic/claude-3-5-haiku-20241022   320 tokens [I: 151, CW: 0, CR: 0, O: 169] 
+                                                                                
+includes                                                                        
+accuracy  0.500                                                                 
+stderr    0.500                                                                 
+                                                                                
+Log:                                                                            
+logs/2025-11-20T09-47-30+01-00_csv-precision-loss_Zmcdosp5fPY69SV6jRkiwX.eval   
+                                                                                ╭──────────────────────────────────────────────────────────────────────────────╮
+│csv_boolean_inconsistency (2 samples): anthropic/claude-3-5-haiku-20241022    │
+╰──────────────────────────────────────────────────────────────────────────────╯
+dataset: (samples)                                                              
+                                                                                
+total time:                           0:00:03                                   
+anthropic/claude-3-5-haiku-20241022   335 tokens [I: 110, CW: 0, CR: 0, O: 225] 
+                                                                                
+includes                                                                        
+accuracy  1.000                                                                 
+stderr    0.000                                                                 
+                                                                                
+Log:                                                                            
+logs/2025-11-20T09-47-33+01-00_csv-boolean-inconsistency_LNkTQZKeL2YYQNSqMSJoeR.
+eval                                                                            
+                                                                                ╭──────────────────────────────────────────────────────────────────────────────╮
+│csv_null_vs_empty (2 samples): anthropic/claude-3-5-haiku-20241022            │
+╰──────────────────────────────────────────────────────────────────────────────╯
+dataset: (samples)                                                              
+                                                                                
+total time:                           0:00:03                                   
+anthropic/claude-3-5-haiku-20241022   364 tokens [I: 113, CW: 0, CR: 0, O: 251] 
+                                                                                
+includes                                                                        
+accuracy  0.500                                                                 
+stderr    0.500                                                                 
+                                                                                
+Log:                                                                            
+logs/2025-11-20T09-47-36+01-00_csv-null-vs-empty_Sg6mA585UMeorcXFKiEWar.eval    
+                                                                                ╭──────────────────────────────────────────────────────────────────────────────╮
+│csv_date_format_confusion (2 samples): anthropic/claude-3-5-haiku-20241022    │
+╰──────────────────────────────────────────────────────────────────────────────╯
+dataset: (samples)                                                              
+                                                                                
+total time:                           0:00:03                                   
+anthropic/claude-3-5-haiku-20241022   387 tokens [I: 127, CW: 0, CR: 0, O: 260] 
+                                                                                
+includes                                                                        
+accuracy  1.000                                                                 
+stderr    0.000                                                                 
+                                                                                
+Log:                                                                            
+logs/2025-11-20T09-47-39+01-00_csv-date-format-confusion_Jz3BcczfqDKqJaRJFAEhMU.
+eval                                                                            
+                                                                                ╭──────────────────────────────────────────────────────────────────────────────╮
+│csv_enum_validation_missing (3 samples): anthropic/claude-3-5-haiku-20241022  │
+╰──────────────────────────────────────────────────────────────────────────────╯
+dataset: (samples)                                                              
+                                                                                
+total time:                           0:00:05                                   
+anthropic/claude-3-5-haiku-20241022   559 tokens [I: 196, CW: 0, CR: 0, O: 363] 
+                                                                                
+includes                                                                        
+accuracy  1.000                                                                 
+stderr    0.000                                                                 
+                                                                                
+Log:                                                                            
+logs/2025-11-20T09-47-42+01-00_csv-enum-validation-missing_HToVWm4k9TKVtLkRkowN8
+r.eval                                                                          
+                                                                                ╭──────────────────────────────────────────────────────────────────────────────╮
+│csv_foreign_key_unclear (2 samples): anthropic/claude-3-5-haiku-20241022      │
+╰──────────────────────────────────────────────────────────────────────────────╯
+dataset: (samples)                                                              
+                                                                                
+total time:                           0:00:03                                   
+anthropic/claude-3-5-haiku-20241022   307 tokens [I: 127, CW: 0, CR: 0, O: 180] 
+                                                                                
+includes                                                                        
+accuracy  0.500                                                                 
+stderr    0.500                                                                 
+                                                                                
+Log:                                                                            
+logs/2025-11-20T09-47-47+01-00_csv-foreign-key-unclear_PMYNdPiD6fWJx3nGCRknW4.ev
+al                                                                              
+                                                                                ╭──────────────────────────────────────────────────────────────────────────────╮
+│csv_array_representation (2 samples): anthropic/claude-3-5-haiku-20241022     │
+╰──────────────────────────────────────────────────────────────────────────────╯
+dataset: (samples)                                                              
+                                                                                
+total time:                           0:00:04                                   
+anthropic/claude-3-5-haiku-20241022   395 tokens [I: 112, CW: 0, CR: 0, O: 283] 
+                                                                                
+includes                                                                        
+accuracy  1.000                                                                 
+stderr    0.000                                                                 
+                                                                                
+Log:                                                                            
+logs/2025-11-20T09-47-50+01-00_csv-array-representation_hYqck3cNZKw94hrNgZ74Xb.e
+val                                                                             
+                                                                                ╭──────────────────────────────────────────────────────────────────────────────╮
+│csv_schema_inference_wrong (2 samples): anthropic/claude-3-5-haiku-20241022   │
+╰──────────────────────────────────────────────────────────────────────────────╯
+dataset: (samples)                                                              
+                                                                                
+total time:                           0:00:06                                   
+anthropic/claude-3-5-haiku-20241022   501 tokens [I: 126, CW: 0, CR: 0, O: 375] 
+                                                                                
+includes                                                                        
+accuracy  1.000                                                                 
+stderr    0.000                                                                 
+                                                                                
+Log:                                                                            
+logs/2025-11-20T09-47-54+01-00_csv-schema-inference-wrong_bqL7We6jvPmwkha9wsXKzw
+.eval                                                                           
+                                                                                
