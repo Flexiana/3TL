@@ -1,0 +1,59 @@
+(* 3TL Grammar for Instaparse *)
+
+three-tl-file = (line-break | element)*
+
+element = comment-line | table-block
+
+(* Comments *)
+comment-line = comment-start comment-text? line-break
+<comment-start> = #'#(?![!@])'
+comment-text = #'[^\n]+'
+
+(* Table Structure *)
+table-block = table-header (schema-def | comment-line | data-row)*
+table-header = <'#!'> ws? identifier ws? line-break
+schema-def = <'#@'> ws? col-defs ws? line-break
+
+col-defs = col-def (ws? <','> ws? col-def)*
+col-def = identifier ws? <':'> ws? type-expr
+
+(* Identifiers - Unicode support *)
+identifier = #'[a-zA-Z_\u00C0-\u024F\u1E00-\u1EFF\u0400-\u04FF\u0370-\u03FF\u4E00-\u9FFF\u3040-\u309F\u30A0-\u30FF][a-zA-Z0-9_\u00C0-\u024F\u1E00-\u1EFF\u0400-\u04FF\u0370-\u03FF\u4E00-\u9FFF\u3040-\u309F\u30A0-\u30FF]*'
+
+(* Type Expressions *)
+type-expr = base-type type-modifier?
+type-modifier = (array-suffix nullable-suffix) | (nullable-suffix array-suffix) | array-suffix | nullable-suffix
+array-suffix = <'['> <']'>
+nullable-suffix = <'?'>
+
+base-type = integer-type | float-type | decimal-type | bool-type | text-type | time-type | ref-type | enum-type
+
+(* Base Types - case insensitive *)
+integer-type = #'(?i)i8|i16|i32|i64|int|u8|u16|u32|u64|uint'
+float-type = #'(?i)f32|f64|float'
+bool-type = #'(?i)bool'
+text-type = #'(?i)str|text'
+time-type = #'(?i)datetime|timestamp|date|time'
+
+decimal-type = #'(?i)decimal' ws? <'('> ws? precision ws? <','> ws? scale ws? <')'>
+precision = #'\d+'
+scale = #'\d+'
+
+ref-type = #'(?i)ref' ws? <'('> ws? ref-table <'.'> ref-column ws? <')'>
+ref-table = identifier
+ref-column = identifier
+
+enum-type = #'(?i)enum' ws? <'('> ws? enum-values ws? <')'>
+enum-values = identifier (ws? <'|'> ws? identifier)*
+
+(* Data Rows *)
+data-row = field (comma field)* line-break
+field = ws? (quoted-field | unquoted-field)? ws?
+<comma> = ','
+
+quoted-field = #'"([^"]|"")*"'
+unquoted-field = #'[^#",\r\n][^",\r\n]*' | #'[0-9][^",\r\n]*'
+
+(* Whitespace and Line Breaks *)
+ws = #'[ \t]+'
+line-break = #'\r?\n'
