@@ -1,0 +1,23 @@
+{
+  "name": "3tl-parser",
+  "version": "1.0.0",
+  "description": "3TL (Typed Talking To LLMs) parser for JavaScript",
+  "type": "module",
+  "main": "src/parser.js",
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "parse": "node src/cli.js"
+  },
+  "keywords": [
+    "3tl",
+    "parser",
+    "csv",
+    "typed"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "peggy": "^4.0.3"
+  },
+  "devDependencies": {}
+}
