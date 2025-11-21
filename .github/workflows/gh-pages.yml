@@ -15,10 +15,6 @@ concurrency:
   group: "pages"
   cancel-in-progress: false
 
-defaults:
-  run:
-    working-directory: ./website
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -40,6 +36,7 @@ jobs:
         id: pages
         uses: actions/configure-pages@v5
       - name: Build with Hugo
+        working-directory: ./website
         run: |
           hugo \
             --gc \
@@ -47,6 +44,8 @@ jobs:
             --baseURL "${{ steps.pages.outputs.base_url }}/"
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./website/public
 
   deploy:
     environment:
