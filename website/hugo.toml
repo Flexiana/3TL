@@ -1,4 +1,4 @@
-baseURL = 'https://flexiana.github.io/3TL/'
+baseURL = 'https://3tl.org/'
 languageCode = 'en-us'
 title = '3TL - Typed Talking To LLMs'
 
